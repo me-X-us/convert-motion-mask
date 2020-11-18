@@ -5,7 +5,8 @@ import torchvision.transforms as T
 import cv2
 import numpy as np
 import os
-# import time
+import time
+
 # print(torchvision.__version__)
 # print(cv2.__version__)
 # print(np.__version__)
@@ -62,7 +63,7 @@ size : 변경할 파일의 사이즈 (default: 파일의 기본 사이즈)
 
 def shape_estimation(filename, img_size=480):
     # 출력 파일 경로 지정
-    # t = time.time()
+    t = time.time()
     output_path = os.path.dirname(filename)
     output_filename = os.path.basename(filename).split(".")[0] + "_shape.mp4"
     output_filename = os.path.join(output_path, output_filename)
@@ -72,7 +73,7 @@ def shape_estimation(filename, img_size=480):
     device = "cuda" if torch.cuda.is_available() else "cpu"  # GPU 사용 가능 여부
 
     print("Using.." + device)
-    if device == 'cpu':
+    if device == "cpu":
         print(f"Can use CPUs -> {torch.get_num_threads()}")
         torch.set_num_threads(torch.get_num_threads())
     COLORS = np.array([(255, 255, 255), (192, 128, 128)])  # background -> 하얀색  # person
@@ -118,7 +119,8 @@ def shape_estimation(filename, img_size=480):
         # frame_count = frame_count + 1
     cap.release()
     out_video.release()
-    # print(f"total time : {(time.time() - t)/60.} min.")
+    print(f"total time : {(time.time() - t)/60.} min.")  # 경과시간
+
 
 # test code.
 # if __name__ == "__main__":
