@@ -45,7 +45,7 @@ img_size : resoluion, default = 720
 """
 
 
-def shape_estimation(filename, img_size=720):
+def shape_estimation(filename, img_size=480):
     t = time.time()
     output_path = os.path.dirname(filename)
     output_filename = os.path.basename(filename).split(".")[0] + "_shape.mp4"
