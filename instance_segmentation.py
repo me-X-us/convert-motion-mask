@@ -39,9 +39,10 @@ def seg_map(img, COLORS):
 
 """
 shape_estimation
+return -> video fps  -> can change
 @params
 filename : Video data's name
-img_size : resoluion, default = 720
+img_size : resoluion, default = 480
 """
 
 
@@ -68,7 +69,11 @@ def shape_estimation(filename, img_size=480):
     assert cap.isOpened()
     width = int(cap.get(3))
     height = int(cap.get(4))
+
+    # fps, total frame, video_length(float type)
+    video_fps = int(cap.get(cv2.CAP_PROP_FPS))
     # nof_frame = cap.get(cv2.CAP_PROP_FRAME_COUNT)
+    # video_length = nof_frame / video_fps
     # frame_count = 0
 
     # video writer (MP4), image shape (height, width, channel)
@@ -104,6 +109,8 @@ def shape_estimation(filename, img_size=480):
     cap.release()
     out_video.release()
     print(f"total time : {(time.time() - t)/60.} min.")  # total time
+
+    return video_fps
 
 
 # test code
