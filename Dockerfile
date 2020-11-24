@@ -8,3 +8,6 @@ libgtk2.0-dev \
 RUN git clone https://github.com/me-X-us/convert-motion-mask.git
 WORKDIR /convert-motion-mask
 RUN pip3 install -r requirements.txt
+
+ENTRYPOINT ["python3"]
+CMD ["./server.py"]

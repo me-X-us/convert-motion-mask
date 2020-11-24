@@ -39,7 +39,10 @@ def seg_map(img, COLORS):
 
 """
 shape_estimation
-return -> video fps  -> can change
+OUTPUT Video :  name -> input_shape.mp4, 
+                codec -> vp09, 
+                cotainer -> mp4
+return : video fps (str type)
 @params
 filename : Video data's name
 img_size : resoluion, default = 480
@@ -77,7 +80,7 @@ def shape_estimation(filename, img_size=480):
     # frame_count = 0
 
     # video writer (MP4), image shape (height, width, channel)
-    video_format = cv2.VideoWriter_fourcc(*"mp4v")
+    video_format = cv2.VideoWriter_fourcc(*"vp09")
     out_video = cv2.VideoWriter(
         output_filename,
         video_format,
@@ -110,7 +113,7 @@ def shape_estimation(filename, img_size=480):
     out_video.release()
     print(f"total time : {(time.time() - t)/60.} min.")  # total time
 
-    return video_fps
+    return str(video_fps)
 
 
 # test code
